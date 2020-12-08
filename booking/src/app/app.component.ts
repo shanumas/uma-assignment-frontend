@@ -1,6 +1,7 @@
 import { Booking } from './classes/booking';
 import { Component } from '@angular/core';
 import { BookingServices } from './services/bookingservices';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -10,12 +11,15 @@ import { BookingServices } from './services/bookingservices';
 })
 export class AppComponent {
   title = 'Bookings';
-
-  constructor(private _bookingServices: BookingServices){
-     this.bookings = []
-  }
-
   bookings: Booking[];
+  checkoutForm: any;
+
+  constructor(private _bookingServices: BookingServices, private formBuilder: FormBuilder){
+     this.bookings = []
+     this.checkoutForm = this.formBuilder.group({
+      name: ''
+    });
+  }
 
   ngOnInit(){
     this._bookingServices.getAllBookings().subscribe(
@@ -23,5 +27,14 @@ export class AppComponent {
         this.bookings = data;
       }
     );
+  }
+
+  onSubmit(booking:any) {
+    this._bookingServices.postBooking(booking).subscribe(
+      data=>{
+        return data;
+      }
+    );
+    this.checkoutForm.reset();
   }
 }
