@@ -9,7 +9,7 @@ import { BookingServices } from './services/bookingservices';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Booking';
+  title = 'Bookings';
 
   constructor(private _bookingServices: BookingServices){
      this.bookings = []
