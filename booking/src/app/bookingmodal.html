@@ -1,14 +1,44 @@
-<div class="mmodal">
+<div class="mmodal" style="width: 30%; height: 30%">
   <div class="mmodal-body">
     <h2 *ngIf="isEdit">Update booking</h2>
     <h2 *ngIf="!isEdit">Add booking</h2>
     <div>
       <form [formGroup]="checkoutForm" (ngSubmit)="addOrEdit(checkoutForm.value)">
-        <div>
+        <div class ="modal-item">
           <label for="name">
             Name
           </label>
           <input id="name" type="text" formControlName="name">
+        </div>
+        <div>
+          <label for="contactNumber">
+            Contact Number
+          </label>
+          <input id="contactNumber" type="text" formControlName="contactNumber">
+        </div>
+        <div>
+          <label for="pickupTime">
+            Pickup Time
+          </label>
+          <input id="pickupTime" type="text" formControlName="pickupTime">
+        </div>
+        <div>
+          <label for="waitingTime">
+            Waiting Time
+          </label>
+          <input id="waitingTime" type="text" formControlName="waitingTime">
+        </div>
+        <div>
+          <label for="passengers">
+            Passengers
+          </label>
+          <input id="passengers" type="text" formControlName="passengers"  value="1">
+        </div>
+        <div>
+          <label for="price">
+            Price
+          </label>
+          <input id="price" type="text" value="100" formControlName="price" [readonly]="true">
         </div>
         <button *ngIf="isEdit" class="button" type="submit">Update</button>
         <button *ngIf="!isEdit" class="button" type="submit">Book</button>
