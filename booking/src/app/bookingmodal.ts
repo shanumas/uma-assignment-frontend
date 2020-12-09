@@ -21,7 +21,7 @@ export class BookingModal implements OnInit {
       contactNumber:'',
       pickupTime:'',
       waitingTime:'',
-      passengers:'1',
+      passengers:'',
       price:'100',
       rating:''
     });

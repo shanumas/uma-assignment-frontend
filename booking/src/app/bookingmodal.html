@@ -4,7 +4,7 @@
     <h2 *ngIf="!isEdit">Add booking</h2>
     <div>
       <form [formGroup]="checkoutForm" (ngSubmit)="addOrEdit(checkoutForm.value)">
-        <div class ="modal-item">
+        <div class="modal-item">
           <label for="name">
             Name
           </label>
@@ -32,7 +32,7 @@
           <label for="passengers">
             Passengers
           </label>
-          <input id="passengers" type="text" formControlName="passengers">
+          <input id="passengers" formControlName="passengers" type="number" min="1" max="10">
         </div>
         <div>
           <label for="price">
@@ -44,7 +44,7 @@
           <label for="rating">
             Rating
           </label>
-          <input id="rating" type="text" formControlName="rating" placeholder="0-5">
+          <input id="rating" formControlName="rating" placeholder="1-5" type="number" min="1" max="5">
         </div>
         <button *ngIf="isEdit" class="button" type="submit">Update</button>
         <button *ngIf="!isEdit" class="button" type="submit">Book</button>
