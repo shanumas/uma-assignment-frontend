@@ -1,5 +1,4 @@
 # uma-assignment-frontend
-Angular Frontend Application for Booking
 
 Run the angular project(in booking):
 
