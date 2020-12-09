@@ -23,11 +23,15 @@ export class AppComponent {
 
   add() {
     const modalRef = this.dialog.open(BookingModal);
+    modalRef.componentInstance.isEdit = false
+    modalRef.componentInstance.modal = this.dialog
   }
 
   edit(booking:Booking) {
     const modalRef = this.dialog.open(BookingModal);
     modalRef.componentInstance.checkoutForm = this.formBuilder.group(booking);
+    modalRef.componentInstance.isEdit = true
+    modalRef.componentInstance.modal = this.dialog
   }
 
   ngOnInit() {

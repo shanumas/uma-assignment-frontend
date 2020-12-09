@@ -1,14 +1,17 @@
 <div class="mmodal">
   <div class="mmodal-body">
+    <h2 *ngIf="isEdit">Update booking</h2>
+    <h2 *ngIf="!isEdit">Add booking</h2>
     <div>
-      <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+      <form [formGroup]="checkoutForm" (ngSubmit)="addOrEdit(checkoutForm.value)">
         <div>
           <label for="name">
             Name
           </label>
           <input id="name" type="text" formControlName="name">
         </div>
-        <button class="button" type="submit">Book</button>
+        <button *ngIf="isEdit" class="button" type="submit">Update</button>
+        <button *ngIf="!isEdit" class="button" type="submit">Book</button>
       </form>
     </div>
   </div>

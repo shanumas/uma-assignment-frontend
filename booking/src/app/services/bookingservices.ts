@@ -20,7 +20,7 @@ export class BookingServices {
   }
 
   editBooking(booking:Booking): Observable<any>{
-    return this.httpclient.post(producerURL+"update", booking)
+    return this.httpclient.post(producerURL+"edit", booking)
   }
 
   deleteBooking(id:Number): Observable<any>{
