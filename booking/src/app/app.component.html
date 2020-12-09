@@ -373,7 +373,7 @@
 
   </div>
 
-  <div id="bookings">
+  <div id="bookings" style="border: 1px groove">
     <mat-table [dataSource]="bookings">
       <!-- Booking Name Definition -->
       <ng-container matColumnDef="name">
@@ -381,16 +381,41 @@
         <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+      <ng-container matColumnDef="contactNumber">
+        <mat-header-cell *matHeaderCellDef> Contact </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.contactNumber}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="pickupTime">
+        <mat-header-cell *matHeaderCellDef> Pickup </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.pickupTime}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="waitingTime">
+        <mat-header-cell *matHeaderCellDef> Waiting </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.waitingTime}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="passengers">
+        <mat-header-cell *matHeaderCellDef> Passengers </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.passengers}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.price}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="rating">
+        <mat-header-cell *matHeaderCellDef> Rating </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.rating}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="edit">
         <mat-header-cell *matHeaderCellDef> Update </mat-header-cell>
         <mat-cell *matCellDef="let row">
           <button class="mdc-button mdc-button--raised" mat-button [value]="row" (click)="edit(row)">
-            <span class="mdc-button__label">Update</span>
+            <i class="material-icons md-36">edit</i>
           </button>
         </mat-cell>
       </ng-container>
@@ -399,14 +424,18 @@
         <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
         <mat-cell *matCellDef="let row">
           <button class="mdc-button mdc-button--raised" mat-button [value]="row" (click)="deleteBooking($event, row)">
-            <span class="mdc-button__label">Delete</span>
+            <i class="material-icons md-36">delete</i>
           </button>
         </mat-cell>
       </ng-container>
 
       <!-- Header and Row Declarations -->
-      <mat-header-row *matHeaderRowDef="['name', 'id', 'edit', 'delete']"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: ['name', 'id', 'edit', 'delete']"></mat-row>
+      <mat-header-row
+        *matHeaderRowDef="['name', 'contactNumber', 'pickupTime', 'waitingTime', 'passengers','price', 'rating',  'edit', 'delete']">
+      </mat-header-row>
+      <mat-row
+        *matRowDef="let row; columns: ['name', 'contactNumber','pickupTime', 'waitingTime', 'passengers','price', 'rating', 'edit', 'delete']">
+      </mat-row>
     </mat-table>
   </div>
 

@@ -17,7 +17,13 @@ export class BookingModal implements OnInit {
 
   constructor(private el: ElementRef, private _bookingServices: BookingServices, private formBuilder: FormBuilder, private dialog: MatDialog, private reactiveFormsModule: ReactiveFormsModule) {
     this.checkoutForm = this.formBuilder.group({
-      name: ''
+      name: '',
+      contactNumber:'',
+      pickupTime:'',
+      waitingTime:'',
+      passengers:'1',
+      price:'100',
+      rating:''
     });
     this.isEdit = false
   }

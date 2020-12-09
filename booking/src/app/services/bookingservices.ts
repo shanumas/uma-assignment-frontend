@@ -16,6 +16,7 @@ export class BookingServices {
   }
 
   addBooking(booking:Booking): Observable<any>{
+    console.log(booking)
     return this.httpclient.post(producerURL+"add", booking)
   }
 

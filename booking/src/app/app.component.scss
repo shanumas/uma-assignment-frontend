@@ -1,0 +1,16 @@
+.mat-column-name, .mat-column-contactNumber, .mat-column-pickupTime, .mat-column-waitingTime, .mat-column-passengers, .mat-column-rating {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 10% !important;
+  width: 5% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+.mat-column-edit, .mat-column-delete{
+  width: 200px
+}

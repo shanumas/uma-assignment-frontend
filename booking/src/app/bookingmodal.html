@@ -32,13 +32,19 @@
           <label for="passengers">
             Passengers
           </label>
-          <input id="passengers" type="text" formControlName="passengers"  value="1">
+          <input id="passengers" type="text" formControlName="passengers">
         </div>
         <div>
           <label for="price">
             Price
           </label>
           <input id="price" type="text" value="100" formControlName="price" [readonly]="true">
+        </div>
+        <div>
+          <label for="rating">
+            Rating
+          </label>
+          <input id="rating" type="text" formControlName="rating" placeholder="0-5">
         </div>
         <button *ngIf="isEdit" class="button" type="submit">Update</button>
         <button *ngIf="!isEdit" class="button" type="submit">Book</button>
