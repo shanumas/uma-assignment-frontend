@@ -1,0 +1,16 @@
+<div class="mmodal">
+  <div class="mmodal-body">
+    <div>
+      <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+        <div>
+          <label for="name">
+            Name
+          </label>
+          <input id="name" type="text" formControlName="name">
+        </div>
+        <button class="button" type="submit">Book</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="mmodal-background"></div>

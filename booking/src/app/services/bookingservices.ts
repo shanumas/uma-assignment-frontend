@@ -15,9 +15,16 @@ export class BookingServices {
     return this.httpclient.get(consumerURL + "bookings");
   }
 
-  postBooking(booking:Booking): Observable<any>{
-    console.log(booking.name)
-    return this.httpclient.post(producerURL+"book", booking)
+  addBooking(booking:Booking): Observable<any>{
+    return this.httpclient.post(producerURL+"add", booking)
+  }
+
+  editBooking(booking:Booking): Observable<any>{
+    return this.httpclient.post(producerURL+"update", booking)
+  }
+
+  deleteBooking(id:Number): Observable<any>{
+    return this.httpclient.delete(producerURL + "delete/"+id)
   }
 
 }

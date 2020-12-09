@@ -1,40 +1,56 @@
+import { BookingModal } from './bookingmodal';
 import { Booking } from './classes/booking';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { BookingServices } from './services/bookingservices';
+import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder } from '@angular/forms';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'Bookings';
   bookings: Booking[];
   checkoutForm: any;
 
-  constructor(private _bookingServices: BookingServices, private formBuilder: FormBuilder){
-     this.bookings = []
-     this.checkoutForm = this.formBuilder.group({
-      name: ''
-    });
+  constructor(private _bookingServices: BookingServices, private dialog: MatDialog, private formBuilder: FormBuilder) {
+    this.bookings = []
+    setInterval(() => { this.fetchBookings(); }, 1000);
   }
 
-  ngOnInit(){
-    this._bookingServices.getAllBookings().subscribe(
-      data=>{
-        this.bookings = data;
-      }
-    );
+  add() {
+    const modalRef = this.dialog.open(BookingModal);
   }
 
-  onSubmit(booking:any) {
-    this._bookingServices.postBooking(booking).subscribe(
-      data=>{
+  edit(booking:Booking) {
+    const modalRef = this.dialog.open(BookingModal);
+    modalRef.componentInstance.checkoutForm = this.formBuilder.group(booking);
+  }
+
+  ngOnInit() {
+    this.fetchBookings()
+  }
+
+  deleteBooking(event: any, booking: Booking) {
+    console.log('Sending delete message')
+    this._bookingServices.deleteBooking(booking.id).subscribe(
+      data => {
         return data;
       }
     );
-    this.checkoutForm.reset();
+  }
+
+  fetchBookings() {
+    if (this._bookingServices) {
+      this._bookingServices.getAllBookings().subscribe(
+        data => {
+          console.log('Fetch all bookings...')
+          this.bookings = data;
+        }
+      );
+    }
   }
 }
