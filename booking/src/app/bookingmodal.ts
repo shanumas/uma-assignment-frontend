@@ -22,7 +22,7 @@ export class BookingModal implements OnInit {
       pickupTime:'',
       waitingTime:'',
       passengers:'',
-      price:'100',
+      price:'10.50',
       rating:''
     });
     this.isEdit = false
